@@ -1,25 +1,345 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Bate-Papo da Turma de Programação para Web</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Bate-Papo da Turma de Programação para Web</title>
+  </head>
+  <body>
+    <!-- Início do meu código -->
 
+    <header
+      class="text-light bg-dark d-flex flex-column justify-content-end"
+      style="height: 50px"
+    >
+      <span class="d-flex justify-content-between" style="width: 160px">
+        <p class="m-2 h5">Alexandre</p>
+        <span class="d-flex align-middle">
+          <img
+            style="width: 22px; cursor: pointer"
+            src="turn_off.svg"
+            alt="desconectar"
+            title="Desconectar"
+          />
+        </span>
+      </span>
+    </header>
 
-<!-- IMPLEMENTE SEU CÓDIGO HTML AQUI!!!! -->
+    <main class="d-flex">
+      <div class="border" style="width: 160px">
+        <p class="p m-2">Amigo</p>
+      </div>
 
+      <section id="chat" class="d-flex flex-column w-100 justify-content-end">
+        <div id="scroll" class="p-2" style="height: 100%; overflow-y: auto">
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
 
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
 
-<script src="scripts/auxiliar.js"></script>
-<script src="scripts/chat.js"></script>
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
 
-</body>
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-start w-100">
+            <div class="text-secondary mt-2" style="max-width: 320px">
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-start"
+                style="font-size: 0.8em"
+              >
+                <i>Alexandre - 15:20</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #a6c2f5"
+              >
+                Hello World, meus chapas
+              </p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-row justify-content-end w-100">
+            <div
+              class="text-secondary mt-2 justify-content-end"
+              style="max-width: 320px"
+            >
+              <p
+                class="m-0 w-100 d-flex flex-row justify-content-end"
+                style="font-size: 0.8em"
+              >
+                <i>Zézin - 15:22</i>
+              </p>
+              <p
+                class="m-0 px-4 py-2 rounded"
+                style="color: #444; background-color: #e3e1e1"
+              >
+                Fala mano
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <div id="login-container" class="d-flex flex-column align-items-center px-2 py-3 w-100">
+            <p>Faça login para começar a conversar</p>
+            <button class="btn btn-primary w-50" onclick="signIn()">Login</button>
+          </div>
+
+          <div
+            id="input-container"
+            class="d-flex flex-row justify-content-center px-2 py-3 w-100"
+          >
+            <input
+              id="message-input"
+              class="form-control mx-2"
+              type="text"
+              placeholder="Escreva uma mensagem aqui"
+            />
+            <button class="btn btn-primary">Enviar</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <!-- Fim do meu código -->
+
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script>
+
+    <script src="scripts/auxiliar.js"></script>
+    <script src="scripts/chat.js"></script>
+    <script src="scripts/index.js"></script>
+  </body>
 </html>

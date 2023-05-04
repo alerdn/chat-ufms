@@ -1,4 +1,4 @@
-/* 
+/** 
  *  Função para verificar mudanças no estado de autenticação do usuário
  *  Essa função é acionada quando o estado de autenticação é alterado.
  *  Por exemplo, quando o usuário entra ou sai do sistema.
@@ -24,7 +24,7 @@ function authStateObserver(user) {
   }
 }
 
-/* 
+/** 
  *  Função para obter o conteúdo da mensagem que será enviada
  *	@return texto contido no textarea que será enviado
  */
@@ -37,7 +37,7 @@ function getMessageInput(){
 
 }
 
-/* 
+/** 
  *  Função que contém o AJAX para ENVIAR a mensagem
  *	@param message_id = Código da mensagem que deve ser enviado junto com os
  *				        demais dados da requição AJAX
@@ -48,7 +48,7 @@ function ajaxSendMessage(message_id){
 	
 }
 
-/* 
+/** 
  *  Função que contém o AJAX para RECEBER a mensagem
  *	@param message_id = Código da mensagem que deve ser enviado junto com
  *				  		a requição AJAX
@@ -60,7 +60,7 @@ function ajaxReceiveMessage(message_id){
 
 }
 
-/* 
+/** 
  *  Função que contém o AJAX para ENVIAR uma mensagem quando o usuário ENTRA no chat
  *  @param message_id = Código da mensagem que deve ser enviado junto com os
  *                demais dados da requição AJAX
@@ -71,7 +71,7 @@ function ajaxSendMessageLogin(message_id){
 
 }
 
-/* 
+/** 
  *  Função que contém o AJAX para ENVIAR uma mensagem quando o usuário SAI no chat
  *  @param message_id = Código da mensagem que deve ser enviado junto com os
  *                demais dados da requição AJAX
@@ -85,7 +85,7 @@ function ajaxSendMessageLogout(message_id, sender_id, sender_name, sender_image)
 
 }
 
-/* 
+/**
  *  Função que é chamada quando um usuário ENTRA do chat
  *  @param user_id = Código do usuário que entrou do sistema
  *  @param user_name = Nome do usuário que entrou do sistema
@@ -98,7 +98,7 @@ function showUserOnline(user_id, user_name, user_image){
 
 }
 
-/* 
+/** 
  *  Função que é chamada quando um usuário SAI do chat
  *  @param user_id = Código do usuário que saiu do sistema
  */
@@ -110,7 +110,7 @@ function hideUserOnline(user_id){
 
 }
 
-/* 
+/** 
  *  Função que deve ser chamada quando quando a requisção AJAX que
  *  recupera a mensagem do servidor retornar os valores 
  *  @param data_message = JSON com oados da mensagem retornada 

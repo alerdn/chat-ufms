@@ -13,11 +13,11 @@
     <!-- Início do meu código -->
 
     <header
-      class="text-light bg-dark d-flex flex-column justify-content-end"
+      class="text-light bg-dark"
       style="height: 50px"
     >
-      <span class="d-flex justify-content-between" style="width: 160px">
-        <p id="user-name" class="m-2 h5"></p>
+      <div class="d-flex flex-row justify-content-start align-items-center  w-100">
+        <p id="user-name" class="m-2" style="font-size: 12px; width: 160px;"></p>
         <span id="signout-button" class="d-none align-middle">
           <img
             style="width: 22px; cursor: pointer"
@@ -27,11 +27,19 @@
             onclick="signOut()"
           />
         </span>
-      </span>
+        <span id="chat-title" class="d-flex m-2 align-middle justify-content-center w-100">Grupo Público</span>
+      </div>
     </header>
 
     <main class="d-flex">
-      <div id="friend-list" class="border" style="width: 160px"></div>
+      <div id="friend-list" class="border" style="width: 160px">
+        <button id="0" class="btn btn-light w-100" onclick="selectChat(0, 'Grupo Público')" style="font-size: 11px">
+          <span class="d-flex flex-row align-items-start"></span>
+            <img class="mr-1" src="https://play-lh.googleusercontent.com/POO25XyhAWywONL3-wHEJfub74dCTBjYAeoQuBdXiLhoZ1o6Z2TyM-dP_VhEjePDtg=w240-h480-rw" style="width: 40px;height: 40px"></img>
+            Grupo Público
+          </span>
+        </button>
+      </div>
 
       <section id="chat" class="d-flex flex-column w-100 justify-content-end">
         <div
@@ -54,14 +62,23 @@
             id="input-container"
             class="d-flex flex-row justify-content-center px-2 py-3 w-100"
           >
-            <input
+            <textarea
               id="message-input"
               class="form-control mx-2"
-              type="text"
+              rows="2"
+              style="resize: none;"
               onkeyup="onInputChange()"
               placeholder="Escreva uma mensagem aqui"
-            />
-            <button id="enviar-button" class="btn btn-primary" onclick="saveMessage()" disabled>Enviar</button>
+            >
+            </textarea>
+            <button
+              id="enviar-button"
+              class="btn btn-primary"
+              onclick="saveMessage()"
+              disabled
+            >
+              Enviar
+            </button>
           </div>
         </footer>
       </section>

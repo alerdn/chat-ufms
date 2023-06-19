@@ -197,7 +197,7 @@ firebase
     var data = snap.val();
     setTimeout(function () {
       ajaxReceiveMessage(snap.key);
-    }, 1000);
+    }, 1500);
   });
 
 // Carrega os usuários online a partir do momento que a página foi carregada

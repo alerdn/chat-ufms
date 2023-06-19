@@ -6,6 +6,8 @@
  */
 function authStateObserver(user) {
   if (user) {
+    selectChat(0, "Grupo Público");
+
     document
       .querySelector("#login-container")
       .classList.replace("d-flex", "d-none");
@@ -34,6 +36,9 @@ function getMessageInput() {
  *				        demais dados da requição AJAX
  */
 function ajaxSendMessage(message_id) {
+  const chatId = localStorage.getItem("chat-id");
+  const receiverName = localStorage.getItem("receiver-name");
+
   const params = {
     method: "POST",
     body: JSON.stringify({
@@ -42,9 +47,9 @@ function ajaxSendMessage(message_id) {
       sender_id: getUserId(),
       sender_name: getUserName(),
       sender_image: getProfileImageUrl(),
-      receiver_id: null,
-      receiver_name: null,
-      visibility: "1",
+      receiver_id: chatId == 0 ? null : chatId,
+      receiver_name: receiverName,
+      visibility: chatId == 0,
       message_text: getMessageInput(),
       color: "#81c2eb",
     }),
@@ -52,6 +57,8 @@ function ajaxSendMessage(message_id) {
       "Content-Type": "application/json; charset=utf-8",
     },
   };
+
+  console.log("enviando mensagem %o", JSON.parse(params.body));
 
   fetch("https://antonellis.com.br/ufms/pw/chat/messages/", params);
   $("#message-input").val("");
@@ -163,11 +170,10 @@ function showUserOnline(user_id, user_name, user_image) {
   if (user_id == getUserId()) return;
 
   const friendButton = $(
-    `<button id=${user_id} style="font-size: 11px">
-      <span class="d-flex">
-        <img src="${user_image}" style="width: 40px;height: 40px">
-        </img>
-        ${user_name}
+    `<button id=${user_id} class="btn btn-light w-100" onClick="selectChat('${user_id}', '${user_name}')" style="font-size: 11px">
+      <span class="d-flex flex-row align-items-center">
+        <img class="mr-1" src="${user_image}" style="width: 40px;height: 40px"></img>
+        <p class="m-0 text-truncate" >${user_name}</p>
       </span>
     </button>`
   );
@@ -195,10 +201,23 @@ function hideUserOnline(user_id) {
 function displayMessage(data_message) {
   if (!data_message.sender_id) return;
 
-  $("#chat-scroll").append(getMessageDiv(data_message));
+  const chatId = localStorage.getItem("chat-id");
+
+  // Se a mensagem é pública e eu estou no grupo público
+  if (data_message.visibility && chatId == 0) {
+    $("#chat-scroll").append(getMessageDiv(data_message));
+  } else if (
+    (data_message.sender_id == getUserId() &&
+      chatId == data_message.receiver_id) ||
+    (data_message.receiver_id == getUserId() &&
+      chatId == data_message.sender_id)
+  ) {
+    $("#chat-scroll").append(getMessageDiv(data_message));
+  }
 }
 
 function getMessageDiv(data_message) {
+  console.log(data_message);
   const isMine = getUserId() == data_message["sender_id"];
 
   if (data_message.receiver_name == "System") {
@@ -214,27 +233,32 @@ function getMessageDiv(data_message) {
   </div>`);
   }
 
+  data_message.message_text = data_message.message_text.replace("\n", "<br/>");
+
   if (isMine) {
-    return $(`<div class="d-flex flex-row justify-content-start w-100">
+    return $(`<div class="d-flex flex-row justify-content-end w-100">
       <div class="text-secondary mt-2" style="max-width: 320px">
         <p
-          class="m-0 w-100 d-flex flex-row justify-content-start"
+          class="m-0 w-100 d-flex flex-row justify-content-end"
           style="font-size: 0.8em"
         >
           <i>${data_message.sender_name} - ${data_message.timestamp}</i>
         </p>
-        <p
-          class="m-0 px-4 py-2 rounded"
-          style="color: #fff; background-color: ${data_message.color}"
-        >
-        ${data_message.message_text}
-        </p>
+        <span class="d-flex w-100">
+          <img class="mr-1 rounded" src="${data_message.sender_image}" style="width: 40px;height: 40px"></img>
+          <p
+            class="m-0 px-4 py-2 rounded w-100"
+            style="color: #fff; background-color: ${data_message.color}"
+          >
+          ${data_message.message_text}
+          </p>
+        </span>
       </div>
     </div>`);
   } else
-    return $(`<div class="d-flex flex-row justify-content-end w-100">
+    return $(`<div class="d-flex flex-row justify-content-start w-100">
     <div
-      class="text-secondary mt-2 justify-content-end"
+      class="text-secondary mt-2 justify-content-start"
       style="max-width: 320px"
     >
       <p
@@ -243,17 +267,36 @@ function getMessageDiv(data_message) {
       >
       <i>${data_message.sender_name} - ${data_message.timestamp}</i>
       </p>
-      <p
-        class="m-0 px-4 py-2 rounded"
-        style="color: #fff; background-color: ${data_message.color}"
-      >
-      ${data_message.message_text}
-      </p>
+      <span class="d-flex w-100">
+        <img class="mr-1 rounded" src="${data_message.sender_image}" style="width: 40px;height: 40px"></img>
+        <p
+          class="m-0 px-4 py-2 rounded w-100"
+          style="color: #fff; background-color: ${data_message.color}"
+        >
+        ${data_message.message_text}
+        </p>
+      </span>
     </div>
   </div>`);
 }
 
 function onInputChange() {
-  console.log("changing")
   $("#enviar-button").prop("disabled", getMessageInput() == "");
+}
+
+/**
+ * Chat-id guardado no localStorage para saber com quem está conversando
+ * 0 = público
+ */
+function selectChat(id, receiver) {
+  localStorage.setItem("chat-id", id);
+  localStorage.setItem("receiver-name", receiver);
+
+  $("#chat-scroll").empty();
+  $("#chat-title").text(receiver);
+  $(`#${id}`).removeClass("btn-light").addClass("btn-secondary");
+
+  for (const child of $("#friend-list").children()) {
+    if (child.id != id) child.classList.replace("btn-secondary", "btn-light");
+  }
 }
